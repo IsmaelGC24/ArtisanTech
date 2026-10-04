@@ -2,11 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
-/* 
-Route::get('/', function () {
-    return view('welcome');
-});
-    */
+Route::get('/', 'App\Http\Controllers\HomeController@index')->name('home');
 
 /*
 |--------------------------------------------------------------------------
@@ -22,3 +18,6 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::put('/products/{id}', 'App\Http\Controllers\Admin\ProductController@update')->name('products.update');
     Route::delete('/products/{id}', 'App\Http\Controllers\Admin\ProductController@destroy')->name('products.destroy');
 });
+
+Auth::routes();
+
