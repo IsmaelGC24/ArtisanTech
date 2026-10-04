@@ -8,9 +8,9 @@ Route::get('/', 'App\Http\Controllers\HomeController@index')->name('home');
 |--------------------------------------------------------------------------
 | Admin section ("/admin/*")
 |--------------------------------------------------------------------------
-| The 'auth' and 'admin' middleware are added when login is implemented.
+| Only authenticated users with the admin role can enter.
 */
-Route::prefix('admin')->name('admin.')->group(function () {
+Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(function () {
     Route::get('/products', 'App\Http\Controllers\Admin\ProductController@index')->name('products.index');
     Route::get('/products/create', 'App\Http\Controllers\Admin\ProductController@create')->name('products.create');
     Route::post('/products', 'App\Http\Controllers\Admin\ProductController@store')->name('products.store');
