@@ -1,0 +1,25 @@
+<?php
+
+return [
+    'title_index' => 'Productos',
+    'title_create' => 'Nuevo producto',
+    'title_edit' => 'Editar producto',
+    'new_link' => '+ Nuevo producto',
+    'name' => 'Nombre',
+    'description' => 'Descripción',
+    'price' => 'Precio',
+    'stock' => 'Stock',
+    'active' => 'Activo',
+    'brand' => 'Marca',
+    'category' => 'Categoría',
+    'select_option' => 'Selecciona una opción',
+    'yes' => 'Sí',
+    'no' => 'No',
+    'actions' => 'Acciones',
+    'edit' => 'Editar',
+    'delete' => 'Eliminar',
+    'confirm_delete' => '¿Eliminar este producto?',
+    'save' => 'Guardar',
+    'update' => 'Actualizar',
+    'empty' => 'No hay productos todavía.',
+];

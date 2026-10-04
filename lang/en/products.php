@@ -1,0 +1,25 @@
+<?php
+
+return [
+    'title_index' => 'Products',
+    'title_create' => 'New product',
+    'title_edit' => 'Edit product',
+    'new_link' => '+ New product',
+    'name' => 'Name',
+    'description' => 'Description',
+    'price' => 'Price',
+    'stock' => 'Stock',
+    'active' => 'Active',
+    'brand' => 'Brand',
+    'category' => 'Category',
+    'select_option' => 'Select an option',
+    'yes' => 'Yes',
+    'no' => 'No',
+    'actions' => 'Actions',
+    'edit' => 'Edit',
+    'delete' => 'Delete',
+    'confirm_delete' => 'Delete this product?',
+    'save' => 'Save',
+    'update' => 'Update',
+    'empty' => 'There are no products yet.',
+];
