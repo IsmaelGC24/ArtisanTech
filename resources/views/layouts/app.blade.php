@@ -15,6 +15,9 @@
                     <a class="nav-link active" href="{{ route('login') }}">{{ __('app.login') }}</a>
                     <a class="nav-link active" href="{{ route('register') }}">{{ __('app.register') }}</a>
                 @else
+                    @if (auth()->user()->isAdmin())
+                    <a class="nav-link active" href="{{ route('admin.home') }}">{{ __('app.admin_panel') }}</a>
+                    @endif
                     <form id="logout" action="{{ route('logout') }}" method="POST">
                         <a role="button" class="nav-link active" onclick="document.getElementById('logout').submit();">{{ __('app.logout') }}</a>
                         @csrf

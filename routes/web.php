@@ -11,6 +11,7 @@ Route::get('/', 'App\Http\Controllers\HomeController@index')->name('home');
 | Only authenticated users with the admin role can enter.
 */
 Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(function () {
+    Route::get('/', 'App\Http\Controllers\Admin\HomeController@index')->name('home');
     Route::get('/products', 'App\Http\Controllers\Admin\ProductController@index')->name('products.index');
     Route::get('/products/create', 'App\Http\Controllers\Admin\ProductController@create')->name('products.create');
     Route::post('/products', 'App\Http\Controllers\Admin\ProductController@store')->name('products.store');

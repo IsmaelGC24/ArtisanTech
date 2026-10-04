@@ -13,10 +13,24 @@
                 <h2 class="text-lg font-bold">{{ __('admin.panel_title') }}</h2>
             </div>
             <nav class="flex-1 p-4 space-y-1">
+                <a href="{{ route('admin.home') }}" class="block px-4 py-2 rounded hover:bg-slate-700 transition">
+                    {{ __('admin.dashboard') }}
+                </a>
                 <a href="{{ route('admin.products.index') }}" class="block px-4 py-2 rounded hover:bg-slate-700 transition">
                     {{ __('admin.products') }}
                 </a>
             </nav>
+            <div class="p-4 border-t border-slate-700 space-y-1">
+                <a href="{{ route('home') }}" class="block px-4 py-2 rounded hover:bg-slate-700 transition text-sm text-slate-300">
+                    {{ __('admin.back_to_store') }}
+                </a>
+                <form action="{{ route('logout') }}" method="POST">
+                    @csrf
+                    <button type="submit" class="w-full text-left px-4 py-2 rounded hover:bg-slate-700 transition text-sm text-slate-300">
+                        {{ __('admin.logout') }}
+                    </button>
+                </form>
+            </div>
         </aside>
 
         <section class="flex-1 p-8">
