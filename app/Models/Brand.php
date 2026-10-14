@@ -24,10 +24,6 @@ class Brand extends Model
     protected $fillable = ['name', 'country', 'website'];
 
     // --- SETTERS ---
-    public function setId(int $id): void
-    {
-        $this->attributes['id'] = $id;
-    }
 
     public function setName(string $name): void
     {

@@ -2,6 +2,4 @@
 
 namespace App\Http\Requests;
 
-class UpdateProductRequest extends StoreProductRequest
-{
-}
+class UpdateProductRequest extends StoreProductRequest {}

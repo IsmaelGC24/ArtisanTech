@@ -38,10 +38,6 @@ class User extends Authenticatable
     }
 
     // --- SETTERS ---
-    public function setId(int $id): void
-    {
-        $this->attributes['id'] = $id;
-    }
 
     public function setName(string $name): void
     {

@@ -26,10 +26,6 @@ class OrderItem extends Model
     protected $fillable = ['quantity', 'unit_price', 'subtotal', 'order_id', 'product_id'];
 
     // --- SETTERS ---
-    public function setId(int $id): void
-    {
-        $this->attributes['id'] = $id;
-    }
 
     public function setQuantity(int $quantity): void
     {

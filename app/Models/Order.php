@@ -27,10 +27,6 @@ class Order extends Model
     protected $fillable = ['order_date', 'status', 'total_amount', 'user_id'];
 
     // --- SETTERS ---
-    public function setId(int $id): void
-    {
-        $this->attributes['id'] = $id;
-    }
 
     public function setOrderDate(string $orderDate): void
     {

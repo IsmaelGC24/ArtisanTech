@@ -25,10 +25,6 @@ class Review extends Model
     protected $fillable = ['rating', 'comment', 'user_id', 'product_id'];
 
     // --- SETTERS ---
-    public function setId(int $id): void
-    {
-        $this->attributes['id'] = $id;
-    }
 
     public function setRating(int $rating): void
     {
