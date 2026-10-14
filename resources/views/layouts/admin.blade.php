@@ -19,6 +19,9 @@
                 <a href="{{ route('admin.products.index') }}" class="block px-4 py-2 rounded hover:bg-slate-700 transition">
                     {{ __('admin.products') }}
                 </a>
+                <a href="{{ route('admin.categories.index') }}" class="block px-4 py-2 rounded hover:bg-slate-700 transition">
+                    {{ __('admin.categories') }}
+                </a>
             </nav>
             <div class="p-4 border-t border-slate-700 space-y-1">
                 <a href="{{ route('home') }}" class="block px-4 py-2 rounded hover:bg-slate-700 transition text-sm text-slate-300">

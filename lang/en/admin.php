@@ -4,6 +4,7 @@ return [
     'panel_title' => 'Administrator Panel',
     'dashboard' => 'Dashboard',
     'products' => 'Products',
+    'categories' => 'Categories',
     'total_products' => 'Products',
     'total_categories' => 'Categories',
     'total_brands' => 'Brands',
