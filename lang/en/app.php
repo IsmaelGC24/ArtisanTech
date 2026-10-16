@@ -5,4 +5,5 @@ return [
     'register' => 'Register',
     'logout' => 'Logout',
     'admin_panel' => 'Admin panel',
+    'products' => 'Products',
 ];
