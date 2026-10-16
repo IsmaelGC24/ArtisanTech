@@ -9,6 +9,7 @@ return [
     'email' => 'El campo :attribute debe ser un correo electrónico válido.',
     'unique' => 'El :attribute ya está en uso.',
     'confirmed' => 'La confirmación de :attribute no coincide.',
+    'url' => 'El campo :attribute debe ser una URL válida.',
     'max' => [
         'numeric' => 'El campo :attribute no puede ser mayor que :max.',
         'string' => 'El campo :attribute no puede tener más de :max caracteres.',
@@ -27,6 +28,8 @@ return [
         'stock' => 'stock',
         'brand_id' => 'marca',
         'category_id' => 'categoría',
+        'country' => 'país',
+        'website' => 'sitio web',
         'email' => 'correo electrónico',
         'password' => 'contraseña',
     ],

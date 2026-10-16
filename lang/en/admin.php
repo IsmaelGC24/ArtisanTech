@@ -5,6 +5,7 @@ return [
     'dashboard' => 'Dashboard',
     'products' => 'Products',
     'categories' => 'Categories',
+    'brands' => 'Brands',
     'total_products' => 'Products',
     'total_categories' => 'Categories',
     'total_brands' => 'Brands',
