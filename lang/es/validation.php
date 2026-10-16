@@ -26,6 +26,8 @@ return [
         'description' => 'descripción',
         'price' => 'precio',
         'stock' => 'stock',
+        'rating' => 'calificación',
+        'comment' => 'comentario',
         'brand_id' => 'marca',
         'category_id' => 'categoría',
         'country' => 'país',

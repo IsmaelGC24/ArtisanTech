@@ -32,8 +32,12 @@ class ProductController extends Controller
 
     public function show(string $id): View
     {
-        $viewData = [];
-        $viewData['product'] = Product::with(['brand', 'category'])
+        $viewData['product'] = Product::with([
+            'brand',
+            'category',
+            'reviews' => fn ($query) => $query->latest(),
+            'reviews.user',
+        ])
             ->where('active', true)
             ->findOrFail($id);
 

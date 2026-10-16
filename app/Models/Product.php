@@ -209,4 +209,9 @@ class Product extends Model
     {
         return '$'.number_format((float) $this->getPrice(), 2);
     }
+
+    public function getAverageRating(): float
+    {
+        return round((float) $this->getReviews()->avg(fn (Review $review) => $review->getRating()), 1);
+    }
 }

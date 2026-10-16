@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Support\Carbon;
 
 /**
  * REVIEW ATTRIBUTES
@@ -111,5 +112,10 @@ class Review extends Model
     public function product(): BelongsTo
     {
         return $this->belongsTo(Product::class);
+    }
+
+    public function getFormattedDate(): string
+    {
+        return Carbon::parse($this->getCreatedAt())->format('d/m/Y');
     }
 }

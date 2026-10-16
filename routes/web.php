@@ -9,6 +9,10 @@ Route::get('/', 'App\Http\Controllers\HomeController@index')->name('home');
 Route::get('/products', 'App\Http\Controllers\ProductController@index')->name('products.index');
 Route::get('/products/{id}', 'App\Http\Controllers\ProductController@show')->name('products.show');
 
+Route::middleware('auth')->group(function () {
+    Route::post('/products/{id}/reviews', 'App\Http\Controllers\ReviewController@store')->name('reviews.store');
+});
+
 // Auth routes
 Auth::routes();
 
