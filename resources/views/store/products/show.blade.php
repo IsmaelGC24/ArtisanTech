@@ -40,6 +40,17 @@
                 @if ($review->getComment())
                     <p class="mb-0 mt-2">{{ $review->getComment() }}</p>
                 @endif
+                @auth
+                    @if ($review->canBeDeletedBy(auth()->user()))
+                        <form action="{{ route('reviews.destroy', $review->getId()) }}" method="POST" class="mt-2">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" onclick="return confirm('{{ __('reviews.confirm_delete') }}')" class="btn btn-outline-danger btn-sm">
+                                {{ __('reviews.delete') }}
+                            </button>
+                        </form>
+                    @endif
+                @endauth
             </div>
         @empty
             <p class="text-muted">{{ __('reviews.none') }}</p>

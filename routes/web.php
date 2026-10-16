@@ -11,6 +11,7 @@ Route::get('/products/{id}', 'App\Http\Controllers\ProductController@show')->nam
 
 Route::middleware('auth')->group(function () {
     Route::post('/products/{id}/reviews', 'App\Http\Controllers\ReviewController@store')->name('reviews.store');
+    Route::delete('/reviews/{id}', 'App\Http\Controllers\ReviewController@destroy')->name('reviews.destroy');
 });
 
 // Auth routes

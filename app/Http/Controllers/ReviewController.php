@@ -6,6 +6,7 @@ use App\Http\Requests\StoreReviewRequest;
 use App\Models\Product;
 use App\Models\Review;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
 
 class ReviewController extends Controller
 {
@@ -21,5 +22,19 @@ class ReviewController extends Controller
         ]);
 
         return redirect()->route('products.show', $product->getId());
+    }
+
+    public function destroy(Request $request, string $id): RedirectResponse
+    {
+        $review = Review::findOrFail($id);
+
+        if (! $review->canBeDeletedBy($request->user())) {
+            abort(403);
+        }
+
+        $productId = $review->getProductId();
+        $review->delete();
+
+        return redirect()->route('products.show', $productId);
     }
 }

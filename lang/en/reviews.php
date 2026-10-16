@@ -11,4 +11,6 @@ return [
     'comment' => 'Comment',
     'submit' => 'Submit review',
     'login_required' => 'Log in to leave a review.',
+    'delete' => 'Delete',
+    'confirm_delete' => 'Delete this review?',
 ];

@@ -118,4 +118,9 @@ class Review extends Model
     {
         return Carbon::parse($this->getCreatedAt())->format('d/m/Y');
     }
+
+    public function canBeDeletedBy(User $user): bool
+    {
+        return $user->isAdmin() || $this->getUserId() === $user->getId();
+    }
 }

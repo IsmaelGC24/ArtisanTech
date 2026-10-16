@@ -11,4 +11,6 @@ return [
     'comment' => 'Comentario',
     'submit' => 'Enviar reseña',
     'login_required' => 'Inicia sesión para dejar una reseña.',
+    'delete' => 'Eliminar',
+    'confirm_delete' => '¿Eliminar esta reseña?',
 ];
