@@ -204,4 +204,9 @@ class Product extends Model
     {
         return $this->getActive() && $this->getStock() > 0;
     }
+
+    public function getFormattedPrice(): string
+    {
+        return '$'.number_format((float) $this->getPrice(), 2);
+    }
 }
