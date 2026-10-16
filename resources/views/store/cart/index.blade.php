@@ -49,6 +49,14 @@
             </table>
 
             <a href="{{ route('products.index') }}" class="btn btn-outline-dark">{{ __('cart.continue_shopping') }}</a>
+            @auth
+                <form action="{{ route('orders.store') }}" method="POST" class="d-inline">
+                    @csrf
+                    <button type="submit" class="btn btn-dark">{{ __('cart.checkout') }}</button>
+                </form>
+            @else
+                <a href="{{ route('login') }}" class="btn btn-dark">{{ __('cart.login_to_buy') }}</a>
+            @endauth
         @endif
     </div>
 @endsection

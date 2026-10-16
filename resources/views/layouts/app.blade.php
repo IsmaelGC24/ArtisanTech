@@ -21,6 +21,7 @@
                     <a class="nav-link active" href="{{ route('admin.home') }}">{{ __('app.admin_panel') }}</a>
                     @endif
                     <form id="logout" action="{{ route('logout') }}" method="POST">
+                    <a class="nav-link active" href="{{ route('orders.index') }}">{{ __('app.my_orders') }}</a>
                         <a role="button" class="nav-link active" onclick="document.getElementById('logout').submit();">{{ __('app.logout') }}</a>
                         @csrf
                     </form>
@@ -30,6 +31,12 @@
     </nav>
 
     <main>
+        @if (session('success'))
+            <div class="container mt-3"><div class="alert alert-success">{{ session('success') }}</div></div>
+        @endif
+        @if (session('error'))
+            <div class="container mt-3"><div class="alert alert-danger">{{ session('error') }}</div></div>
+        @endif
         @yield('content')
     </main>
 </body>

@@ -11,4 +11,6 @@ return [
     'empty' => 'Tu carrito está vacío.',
     'continue_shopping' => 'Seguir comprando',
     'add' => 'Agregar al carrito',
+    'checkout' => 'Comprar',
+    'login_to_buy' => 'Inicia sesión para comprar',
 ];

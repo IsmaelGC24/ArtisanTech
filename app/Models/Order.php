@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\DB;
 
 /**
  * ORDER ATTRIBUTES
@@ -118,5 +120,66 @@ class Order extends Model
     public function calculateTotal(): float
     {
         return (float) $this->getOrderItems()->sum(fn (OrderItem $item) => (float) $item->getSubtotal());
+    }
+
+    public function getFormattedOrderDate(): string
+    {
+        return Carbon::parse($this->getOrderDate())->format('d/m/Y H:i');
+    }
+
+    public function getFormattedTotal(): string
+    {
+        return '$'.number_format((float) $this->getTotalAmount(), 2);
+    }
+
+    public function canBeViewedBy(User $user): bool
+    {
+        return $user->isAdmin() || $this->getUserId() === $user->getId();
+    }
+
+    public static function placeFromCart(User $user, array $cart): ?Order
+    {
+        return DB::transaction(function () use ($user, $cart) {
+            $products = Product::where('active', true)
+                ->whereIn('id', array_keys($cart))
+                ->lockForUpdate()
+                ->get();
+
+            if ($products->count() !== count($cart)) {
+                return null;
+            }
+
+            foreach ($products as $product) {
+                if ($product->getStock() < $cart[$product->getId()]) {
+                    return null;
+                }
+            }
+
+            $order = self::create([
+                'order_date' => now(),
+                'status' => 'completed',
+                'total_amount' => 0,
+                'user_id' => $user->getId(),
+            ]);
+
+            foreach ($products as $product) {
+                $item = new OrderItem([
+                    'quantity' => $cart[$product->getId()],
+                    'unit_price' => $product->getPrice(),
+                    'order_id' => $order->getId(),
+                    'product_id' => $product->getId(),
+                ]);
+                $item->setSubtotal(number_format($item->calculateSubtotal(), 2, '.', ''));
+                $item->save();
+
+                $product->setStock($product->getStock() - $item->getQuantity());
+                $product->save();
+            }
+
+            $order->setTotalAmount(number_format($order->calculateTotal(), 2, '.', ''));
+            $order->save();
+
+            return $order;
+        });
     }
 }

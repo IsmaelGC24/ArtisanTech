@@ -7,4 +7,5 @@ return [
     'admin_panel' => 'Panel de administración',
     'products' => 'Productos',
     'cart' => 'Carrito',
+    'my_orders' => 'Mis pedidos',
 ];

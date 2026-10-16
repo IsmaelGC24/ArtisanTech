@@ -128,4 +128,14 @@ class OrderItem extends Model
     {
         return $this->getQuantity() * (float) $this->getUnitPrice();
     }
+
+    public function getFormattedUnitPrice(): string
+    {
+        return '$'.number_format((float) $this->getUnitPrice(), 2);
+    }
+
+    public function getFormattedSubtotal(): string
+    {
+        return '$'.number_format((float) $this->getSubtotal(), 2);
+    }
 }

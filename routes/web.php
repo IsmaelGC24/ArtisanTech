@@ -19,6 +19,10 @@ Route::get('/cart', 'App\Http\Controllers\CartController@index')->name('cart.ind
 Route::post('/cart/{id}', 'App\Http\Controllers\CartController@add')->name('cart.add');
 Route::delete('/cart/{id}', 'App\Http\Controllers\CartController@remove')->name('cart.remove');
 
+Route::post('/checkout', 'App\Http\Controllers\OrderController@store')->name('orders.store');
+Route::get('/orders', 'App\Http\Controllers\OrderController@index')->name('orders.index');
+Route::get('/orders/{id}', 'App\Http\Controllers\OrderController@show')->name('orders.show');
+
 // Auth routes
 Auth::routes();
 
