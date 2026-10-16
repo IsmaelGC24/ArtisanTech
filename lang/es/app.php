@@ -6,4 +6,5 @@ return [
     'logout' => 'Cerrar sesión',
     'admin_panel' => 'Panel de administración',
     'products' => 'Productos',
+    'cart' => 'Carrito',
 ];

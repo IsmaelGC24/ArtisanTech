@@ -14,6 +14,11 @@ Route::middleware('auth')->group(function () {
     Route::delete('/reviews/{id}', 'App\Http\Controllers\ReviewController@destroy')->name('reviews.destroy');
 });
 
+// Cart section ("/cart")
+Route::get('/cart', 'App\Http\Controllers\CartController@index')->name('cart.index');
+Route::post('/cart/{id}', 'App\Http\Controllers\CartController@add')->name('cart.add');
+Route::delete('/cart/{id}', 'App\Http\Controllers\CartController@remove')->name('cart.remove');
+
 // Auth routes
 Auth::routes();
 

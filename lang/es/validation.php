@@ -28,6 +28,7 @@ return [
         'stock' => 'stock',
         'rating' => 'calificación',
         'comment' => 'comentario',
+        'quantity' => 'cantidad',
         'brand_id' => 'marca',
         'category_id' => 'categoría',
         'country' => 'país',

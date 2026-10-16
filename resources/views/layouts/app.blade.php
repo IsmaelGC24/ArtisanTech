@@ -11,7 +11,8 @@
         <div class="container">
             <a class="navbar-brand" href="{{ route('home') }}">{{ config('app.name') }}</a>
             <div class="navbar-nav ms-auto">
-                <a class="nav-link active" href="{{ route('products.index') }}">{{ __('app.products') }}</a>                
+                <a class="nav-link active" href="{{ route('products.index') }}">{{ __('app.products') }}</a>
+                <a class="nav-link active" href="{{ route('cart.index') }}">{{ __('app.cart') }} ({{ count(session('cart', [])) }})</a>              
                 @guest
                     <a class="nav-link active" href="{{ route('login') }}">{{ __('app.login') }}</a>
                     <a class="nav-link active" href="{{ route('register') }}">{{ __('app.register') }}</a>

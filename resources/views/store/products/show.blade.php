@@ -16,6 +16,15 @@
         @if ($viewData['product']->checkAvailability())
             <span class="badge bg-success">{{ __('catalog.in_stock') }}</span>
             <span class="text-muted ms-2">{{ __('catalog.units', ['count' => $viewData['product']->getStock()]) }}</span>
+
+            <form action="{{ route('cart.add', $viewData['product']->getId()) }}" method="POST" class="d-flex gap-2 mt-3 col-md-4">
+                @csrf
+                <input type="number" name="quantity" value="1" min="1" max="{{ $viewData['product']->getStock() }}" class="form-control">
+                <button type="submit" class="btn btn-dark text-nowrap">{{ __('cart.add') }}</button>
+            </form>
+            @error('quantity')
+                <span class="text-danger small">{{ $message }}</span>
+            @enderror
         @else
             <span class="badge bg-secondary">{{ __('catalog.out_of_stock') }}</span>
         @endif
