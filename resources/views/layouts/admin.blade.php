@@ -16,17 +16,23 @@
                 <a href="{{ route('admin.home') }}" class="block px-4 py-2 rounded hover:bg-slate-700 transition">
                     {{ __('admin.dashboard') }}
                 </a>
-                    <a href="{{ route('admin.products.index') }}" class="block px-4 py-2 rounded hover:bg-slate-700 transition">
+                <a href="{{ route('admin.products.index') }}" class="block px-4 py-2 rounded hover:bg-slate-700 transition">
                     {{ __('admin.products') }}
                 </a>
-                    <a href="{{ route('admin.categories.index') }}" class="block px-4 py-2 rounded hover:bg-slate-700 transition">
+                <a href="{{ route('admin.categories.index') }}" class="block px-4 py-2 rounded hover:bg-slate-700 transition">
                     {{ __('admin.categories') }}
                 </a>
-                    <a href="{{ route('admin.brands.index') }}" class="block px-4 py-2 rounded hover:bg-slate-700 transition">
+                <a href="{{ route('admin.brands.index') }}" class="block px-4 py-2 rounded hover:bg-slate-700 transition">
                     {{ __('admin.brands') }}
                 </a>
             </nav>
             <div class="p-4 border-t border-slate-700 space-y-1">
+                <div class="px-4 py-2 flex gap-3 text-sm">
+                    @foreach (config('app.available_locales') as $locale)
+                        <a href="{{ route('language.change', $locale) }}"
+                        class="{{ app()->getLocale() === $locale ? 'font-bold text-white' : 'text-slate-400 hover:text-white' }}">{{ strtoupper($locale) }}</a>
+                    @endforeach
+                </div>
                 <a href="{{ route('home') }}" class="block px-4 py-2 rounded hover:bg-slate-700 transition text-sm text-slate-300">
                     {{ __('admin.back_to_store') }}
                 </a>

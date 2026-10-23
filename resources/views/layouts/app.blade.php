@@ -26,6 +26,9 @@
                         @csrf
                     </form>
                 @endguest
+                @foreach (config('app.available_locales') as $locale)
+                    <a class="nav-link {{ app()->getLocale() === $locale ? 'active fw-bold' : '' }}" href="{{ route('language.change', $locale) }}">{{ strtoupper($locale) }}</a>
+                @endforeach
             </div>
         </div>
     </nav>

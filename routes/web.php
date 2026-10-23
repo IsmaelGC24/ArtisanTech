@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 // Public section ("/")
 Route::get('/', 'App\Http\Controllers\HomeController@index')->name('home');
+Route::get('/language/{locale}', 'App\Http\Controllers\LanguageController@change')->name('language.change');
 
 Route::get('/products', 'App\Http\Controllers\ProductController@index')->name('products.index');
 Route::get('/products/{id}', 'App\Http\Controllers\ProductController@show')->name('products.show');
