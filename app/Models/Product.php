@@ -214,4 +214,14 @@ class Product extends Model
     {
         return round((float) $this->getReviews()->avg(fn (Review $review) => $review->getRating()), 1);
     }
+
+    public function getReviewsCount(): int
+    {
+        return (int) ($this->attributes['reviews_count'] ?? 0);
+    }
+
+    public function getUnitsSold(): int
+    {
+        return (int) ($this->attributes['units_sold'] ?? 0);
+    }
 }

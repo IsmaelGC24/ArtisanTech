@@ -79,5 +79,6 @@ class DatabaseSeeder extends Seeder
                 'category_id' => $categories[$category]->getId(),
             ]);
         }
+        $this->call(DemoActivitySeeder::class);
     }
 }
