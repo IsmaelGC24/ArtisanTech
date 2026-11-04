@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Interfaces\PaymentMethod;
 use App\Models\Order;
 use App\Models\Product;
 use App\Models\Review;
@@ -61,7 +62,7 @@ class DemoActivitySeeder extends Seeder
             foreach ($lines as $productName => $quantity) {
                 $cart[Product::where('name', $productName)->firstOrFail()->getId()] = $quantity;
             }
-            Order::placeFromCart($customers[$customerIndex], $cart);
+            Order::placeFromCart($customers[$customerIndex], $cart, app(PaymentMethod::class));
         }
     }
 }

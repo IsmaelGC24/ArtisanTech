@@ -13,4 +13,7 @@ return [
     'add' => 'Agregar al carrito',
     'checkout' => 'Comprar',
     'login_to_buy' => 'Inicia sesión para comprar',
+    'payment_method' => 'Método de pago',
+    'payment_card' => 'Tarjeta (simulado)',
+    'payment_cash' => 'Contra entrega',
 ];

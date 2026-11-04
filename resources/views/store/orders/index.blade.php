@@ -16,6 +16,7 @@
                         <th>{{ __('orders.number') }}</th>
                         <th>{{ __('orders.date') }}</th>
                         <th>{{ __('orders.status') }}</th>
+                        <th>{{ __('orders.payment_method') }}</th>
                         <th>{{ __('orders.total') }}</th>
                         <th></th>
                     </tr>
@@ -26,6 +27,7 @@
                             <td>#{{ $order->getId() }}</td>
                             <td>{{ $order->getFormattedOrderDate() }}</td>
                             <td>{{ __('orders.status_'.$order->getStatus()) }}</td>
+                            <td>{{ __('orders.payment_'.$order->getPaymentMethod()) }}</td>
                             <td>{{ $order->getFormattedTotal() }}</td>
                             <td>
                                 <a href="{{ route('orders.show', $order->getId()) }}" class="btn btn-outline-dark btn-sm">

@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->dateTime('order_date')->useCurrent();
             $table->string('status')->default('pending');
+            $table->string('payment_method')->default('card');
             $table->decimal('total_amount', 10, 2)->default(0);
             $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
             $table->timestamps();

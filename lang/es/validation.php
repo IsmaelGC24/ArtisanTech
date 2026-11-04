@@ -35,5 +35,6 @@ return [
         'website' => 'sitio web',
         'email' => 'correo electrónico',
         'password' => 'contraseña',
+        'payment_method' => 'método de pago',
     ],
 ];
