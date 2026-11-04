@@ -10,19 +10,22 @@ Route::get('/language/{locale}', 'App\Http\Controllers\LanguageController@change
 Route::get('/products', 'App\Http\Controllers\ProductController@index')->name('products.index');
 Route::get('/products/{id}', 'App\Http\Controllers\ProductController@show')->name('products.show');
 
-Route::middleware('auth')->group(function () {
-    Route::post('/products/{id}/reviews', 'App\Http\Controllers\ReviewController@store')->name('reviews.store');
-    Route::delete('/reviews/{id}', 'App\Http\Controllers\ReviewController@destroy')->name('reviews.destroy');
-});
-
 // Cart section ("/cart")
 Route::get('/cart', 'App\Http\Controllers\CartController@index')->name('cart.index');
 Route::post('/cart/{id}', 'App\Http\Controllers\CartController@add')->name('cart.add');
 Route::delete('/cart/{id}', 'App\Http\Controllers\CartController@remove')->name('cart.remove');
 
-Route::post('/checkout', 'App\Http\Controllers\OrderController@store')->name('orders.store');
-Route::get('/orders', 'App\Http\Controllers\OrderController@index')->name('orders.index');
-Route::get('/orders/{id}', 'App\Http\Controllers\OrderController@show')->name('orders.show');
+// Customer section (only authenticated users)
+Route::middleware('auth')->group(function () {
+    // Reviews
+    Route::post('/products/{id}/reviews', 'App\Http\Controllers\ReviewController@store')->name('reviews.store');
+    Route::delete('/reviews/{id}', 'App\Http\Controllers\ReviewController@destroy')->name('reviews.destroy');
+
+    // Orders
+    Route::post('/checkout', 'App\Http\Controllers\OrderController@store')->name('orders.store');
+    Route::get('/orders', 'App\Http\Controllers\OrderController@index')->name('orders.index');
+    Route::get('/orders/{id}', 'App\Http\Controllers\OrderController@show')->name('orders.show');
+});
 
 // Auth routes
 Auth::routes();
@@ -60,5 +63,4 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
     Route::get('/brands/{id}/edit', 'App\Http\Controllers\Admin\BrandController@edit')->name('brands.edit');
     Route::put('/brands/{id}', 'App\Http\Controllers\Admin\BrandController@update')->name('brands.update');
     Route::delete('/brands/{id}', 'App\Http\Controllers\Admin\BrandController@destroy')->name('brands.destroy');
-
 });

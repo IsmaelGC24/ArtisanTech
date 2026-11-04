@@ -13,4 +13,7 @@ return [
     'add' => 'Add to cart',
     'checkout' => 'Checkout',
     'login_to_buy' => 'Log in to checkout',
+    'payment_method' => 'Payment method',
+    'payment_card' => 'Card (simulated)',
+    'payment_cash' => 'Cash on delivery',
 ];

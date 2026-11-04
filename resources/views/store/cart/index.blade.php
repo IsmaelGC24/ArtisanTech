@@ -48,13 +48,25 @@
                 </tfoot>
             </table>
 
-            <a href="{{ route('products.index') }}" class="btn btn-outline-dark">{{ __('cart.continue_shopping') }}</a>
             @auth
-                <form action="{{ route('orders.store') }}" method="POST" class="d-inline">
+                <form action="{{ route('orders.store') }}" method="POST">
                     @csrf
+                    <div class="mb-3">
+                        <label class="form-label fw-semibold">{{ __('cart.payment_method') }}</label>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="payment_method" id="payment_card" value="card" checked>
+                            <label class="form-check-label" for="payment_card">{{ __('cart.payment_card') }}</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="payment_method" id="payment_cash" value="cash">
+                            <label class="form-check-label" for="payment_cash">{{ __('cart.payment_cash') }}</label>
+                        </div>
+                    </div>
+                    <a href="{{ route('products.index') }}" class="btn btn-outline-dark">{{ __('cart.continue_shopping') }}</a>
                     <button type="submit" class="btn btn-dark">{{ __('cart.checkout') }}</button>
                 </form>
             @else
+                <a href="{{ route('products.index') }}" class="btn btn-outline-dark">{{ __('cart.continue_shopping') }}</a>
                 <a href="{{ route('login') }}" class="btn btn-dark">{{ __('cart.login_to_buy') }}</a>
             @endauth
         @endif

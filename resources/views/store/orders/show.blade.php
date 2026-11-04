@@ -10,6 +10,7 @@
         <p class="text-muted">
             {{ $viewData['order']->getFormattedOrderDate() }} ·
             {{ __('orders.status_'.$viewData['order']->getStatus()) }} ·
+            {{ __('orders.payment_method') }}: {{ __('orders.payment_'.$viewData['order']->getPaymentMethod()) }} &middot;
             {{ __('orders.customer') }}: {{ $viewData['order']->getUser()->getName() }}
         </p>
 

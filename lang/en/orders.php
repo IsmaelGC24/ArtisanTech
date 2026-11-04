@@ -19,4 +19,8 @@ return [
     'stock_error' => 'Some products are no longer available in the requested quantity. Check your cart.',
     'status_pending' => 'Pending',
     'status_completed' => 'Completed',
+    'status_paid' => 'Paid',
+    'payment_method' => 'Payment method',
+    'payment_card' => 'Card',
+    'payment_cash' => 'Cash on delivery',
 ];

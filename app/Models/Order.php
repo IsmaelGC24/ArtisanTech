@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Interfaces\PaymentMethod;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -15,6 +16,7 @@ use Illuminate\Support\Facades\DB;
  * $this->attributes['id'] - int - primary key
  * $this->attributes['order_date'] - string - date and time of the order
  * $this->attributes['status'] - string - status of the order (pending, paid, ...)
+ * $this->attributes['payment_method'] - string - how the order was paid (card, cash)
  * $this->attributes['total_amount'] - string - total of the order (decimal with 2 places)
  * $this->attributes['user_id'] - int - foreign key to users table
  * $this->attributes['created_at'] - string - creation timestamp
@@ -26,7 +28,7 @@ class Order extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['order_date', 'status', 'total_amount', 'user_id'];
+    protected $fillable = ['order_date', 'status', 'payment_method', 'total_amount', 'user_id'];
 
     // --- SETTERS ---
 
@@ -38,6 +40,11 @@ class Order extends Model
     public function setStatus(string $status): void
     {
         $this->attributes['status'] = $status;
+    }
+
+    public function setPaymentMethod(string $paymentMethod): void
+    {
+        $this->attributes['payment_method'] = $paymentMethod;
     }
 
     public function setTotalAmount(string $totalAmount): void
@@ -74,6 +81,11 @@ class Order extends Model
     public function getStatus(): string
     {
         return $this->attributes['status'];
+    }
+
+    public function getPaymentMethod(): string
+    {
+        return $this->attributes['payment_method'];
     }
 
     public function getTotalAmount(): string
@@ -137,9 +149,9 @@ class Order extends Model
         return $user->isAdmin() || $this->getUserId() === $user->getId();
     }
 
-    public static function placeFromCart(User $user, array $cart): ?Order
+    public static function placeFromCart(User $user, array $cart, PaymentMethod $paymentMethod): ?Order
     {
-        return DB::transaction(function () use ($user, $cart) {
+        return DB::transaction(function () use ($user, $cart, $paymentMethod) {
             $products = Product::where('active', true)
                 ->whereIn('id', array_keys($cart))
                 ->lockForUpdate()
@@ -157,7 +169,8 @@ class Order extends Model
 
             $order = self::create([
                 'order_date' => now(),
-                'status' => 'completed',
+                'status' => $paymentMethod->getInitialStatus(),
+                'payment_method' => $paymentMethod->getName(),
                 'total_amount' => 0,
                 'user_id' => $user->getId(),
             ]);

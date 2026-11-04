@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreOrderRequest;
+use App\Interfaces\PaymentMethod;
 use App\Models\Order;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -33,7 +35,7 @@ class OrderController extends Controller
         return view('store.orders.show')->with('viewData', $viewData);
     }
 
-    public function store(Request $request): RedirectResponse
+    public function store(StoreOrderRequest $request): RedirectResponse
     {
         $cart = $request->session()->get('cart', []);
 
@@ -41,7 +43,8 @@ class OrderController extends Controller
             return redirect()->route('cart.index');
         }
 
-        $order = Order::placeFromCart($request->user(), $cart);
+        $paymentMethod = app(PaymentMethod::class);
+        $order = Order::placeFromCart($request->user(), $cart, $paymentMethod);
 
         if ($order === null) {
             return redirect()->route('cart.index')->with('error', __('orders.stock_error'));
