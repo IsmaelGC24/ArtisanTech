@@ -19,7 +19,7 @@ class ProductController extends Controller
             ->when($request->query('category_id'), fn ($query, $id) => $query->where('category_id', $id))
             ->when($request->query('brand_id'), fn ($query, $id) => $query->where('brand_id', $id))
             ->orderBy('name')
-            ->paginate(9)
+            ->paginate(12)
             ->withQueryString();
         $viewData['categories'] = Category::orderBy('name')->get();
         $viewData['brands'] = Brand::orderBy('name')->get();
