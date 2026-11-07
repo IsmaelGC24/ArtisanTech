@@ -3,52 +3,54 @@
 @section('title', __('categories.title_index'))
 
 @section('content')
-    <div class="flex items-center justify-between mb-6">
-        <h1 class="text-2xl font-bold text-gray-800">{{ __('categories.title_index') }}</h1>
-        <a href="{{ route('admin.categories.create') }}" class="bg-slate-800 text-white px-4 py-2 rounded hover:bg-slate-700 transition">
+    <div class="d-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0">{{ __('categories.title_index') }}</h1>
+        <a href="{{ route('admin.categories.create') }}" class="btn btn-primary">
             {{ __('categories.new_link') }}
         </a>
     </div>
 
-    <div class="bg-white rounded shadow overflow-hidden">
-        <table class="w-full text-left">
-            <thead class="bg-gray-50 border-b">
-                <tr>
-                    <th class="px-4 py-3 text-sm font-semibold text-gray-600">{{ __('categories.name') }}</th>
-                    <th class="px-4 py-3 text-sm font-semibold text-gray-600">{{ __('categories.description') }}</th>
-                    <th class="px-4 py-3 text-sm font-semibold text-gray-600">{{ __('categories.products_count') }}</th>
-                    <th class="px-4 py-3 text-sm font-semibold text-gray-600">{{ __('categories.actions') }}</th>
-                </tr>
-            </thead>
-            <tbody class="divide-y">
-                @forelse ($viewData['categories'] as $category)
+    <div class="card shadow-sm">
+        <div class="table-responsive">
+            <table class="table table-striped table-hover align-middle mb-0">
+                <thead class="table-light">
                     <tr>
-                        <td class="px-4 py-3">{{ $category->getName() }}</td>
-                        <td class="px-4 py-3">{{ $category->getDescription() }}</td>
-                        <td class="px-4 py-3">{{ $category->getProducts()->count() }}</td>
-                        <td class="px-4 py-3 space-x-2">
-                            <a href="{{ route('admin.categories.edit', $category->getId()) }}" class="inline-block bg-amber-500 text-white px-3 py-1 rounded text-sm hover:bg-amber-600 transition">
-                                {{ __('categories.edit') }}
-                            </a>
-                            <form action="{{ route('admin.categories.destroy', $category->getId()) }}" method="POST" class="inline">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" onclick="return confirm('{{ __('categories.confirm_delete') }}')" class="bg-red-500 text-white px-3 py-1 rounded text-sm hover:bg-red-600 transition">
-                                    {{ __('categories.delete') }}
-                                </button>
-                            </form>
-                        </td>
+                        <th scope="col">{{ __('categories.name') }}</th>
+                        <th scope="col">{{ __('categories.description') }}</th>
+                        <th scope="col">{{ __('categories.products_count') }}</th>
+                        <th scope="col">{{ __('categories.actions') }}</th>
                     </tr>
-                @empty
-                    <tr>
-                        <td colspan="4" class="px-4 py-6 text-center text-gray-500">{{ __('categories.empty') }}</td>
-                    </tr>
-                @endforelse
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    @forelse ($viewData['categories'] as $category)
+                        <tr>
+                            <td>{{ $category->getName() }}</td>
+                            <td>{{ $category->getDescription() }}</td>
+                            <td>{{ $category->getProducts()->count() }}</td>
+                            <td>
+                                <a href="{{ route('admin.categories.edit', $category->getId()) }}" class="btn btn-warning btn-sm">
+                                    {{ __('categories.edit') }}
+                                </a>
+                                <form action="{{ route('admin.categories.destroy', $category->getId()) }}" method="POST" class="d-inline">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" onclick="return confirm('{{ __('categories.confirm_delete') }}')" class="btn btn-danger btn-sm">
+                                        {{ __('categories.delete') }}
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
+                    @empty
+                        <tr>
+                            <td colspan="4" class="text-center text-muted py-4">{{ __('categories.empty') }}</td>
+                        </tr>
+                    @endforelse
+                </tbody>
+            </table>
+        </div>
     </div>
 
-    <div class="mt-4">
+    <div class="mt-3">
         {{ $viewData['categories']->links() }}
     </div>
 @endsection
