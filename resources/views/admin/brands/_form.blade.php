@@ -1,28 +1,28 @@
 @php($b = $brand)
 
-<div class="mb-4">
-    <label class="block text-sm font-medium text-gray-700 mb-1">{{ __('brands.name') }}</label>
-    <input type="text" name="name" value="{{ old('name', $b?->getName() ?? '') }}"
-           class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-slate-500">
+<div class="mb-3">
+    <label for="name" class="form-label">{{ __('brands.name') }}</label>
+    <input type="text" id="name" name="name" value="{{ old('name', $b?->getName() ?? '') }}"
+           class="form-control @error('name') is-invalid @enderror">
     @error('name')
-        <span class="text-red-600 text-sm">{{ $message }}</span>
+        <div class="invalid-feedback">{{ $message }}</div>
+    @enderror
+</div>
+
+<div class="mb-3">
+    <label for="country" class="form-label">{{ __('brands.country') }}</label>
+    <input type="text" id="country" name="country" value="{{ old('country', $b?->getCountry() ?? '') }}"
+           class="form-control @error('country') is-invalid @enderror">
+    @error('country')
+        <div class="invalid-feedback">{{ $message }}</div>
     @enderror
 </div>
 
 <div class="mb-4">
-    <label class="block text-sm font-medium text-gray-700 mb-1">{{ __('brands.country') }}</label>
-    <input type="text" name="country" value="{{ old('country', $b?->getCountry() ?? '') }}"
-           class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-slate-500">
-    @error('country')
-        <span class="text-red-600 text-sm">{{ $message }}</span>
-    @enderror
-</div>
-
-<div class="mb-6">
-    <label class="block text-sm font-medium text-gray-700 mb-1">{{ __('brands.website') }}</label>
-    <input type="text" name="website" value="{{ old('website', $b?->getWebsite() ?? '') }}"
-           class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-slate-500">
+    <label for="website" class="form-label">{{ __('brands.website') }}</label>
+    <input type="text" id="website" name="website" value="{{ old('website', $b?->getWebsite() ?? '') }}"
+           class="form-control @error('website') is-invalid @enderror">
     @error('website')
-        <span class="text-red-600 text-sm">{{ $message }}</span>
+        <div class="invalid-feedback">{{ $message }}</div>
     @enderror
 </div>
