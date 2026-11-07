@@ -52,10 +52,12 @@ class DemoActivitySeeder extends Seeder
 
         // customer index, lines (product => quantity)
         $orders = [
-            [0, ['iPhone 15' => 2, 'WH-1000XM5' => 1]],
-            [1, ['MacBook Air' => 1, 'PlayStation 5' => 1]],
-            [2, ['PlayStation 5' => 2, 'Galaxy A55' => 1]],
-            [0, ['iPhone 15' => 1]],
+            [0, ['iPhone 18 Pro' => 3, 'MacBook Pro' => 2]],
+            [1, ['MacBook Pro' => 3, 'PlayStation 5' => 2]],
+            [2, ['iPhone 18 Pro' => 3, 'PlayStation 5' => 2, 'Vivobook 15' => 1]],
+            [0, ['Vivobook 15' => 2, 'iPhone 15' => 1]],
+            [1, ['WH-1000XM5' => 1, 'MacBook Air' => 1]],
+            [2, ['Galaxy A55' => 1]],
         ];
         foreach ($orders as [$customerIndex, $lines]) {
             $cart = [];
