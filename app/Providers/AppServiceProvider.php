@@ -5,13 +5,12 @@ namespace App\Providers;
 use App\Interfaces\PaymentMethod;
 use App\Util\CardPayment;
 use App\Util\CashOnDeliveryPayment;
+use App\Util\MedellinWeather;
+use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
 {
-    /**
-     * Register any application services.
-     */
     public function register(): void
     {
         $this->app->bind(PaymentMethod::class, function ($app) {
@@ -23,11 +22,10 @@ class AppServiceProvider extends ServiceProvider
         });
     }
 
-    /**
-     * Bootstrap any application services.
-     */
     public function boot(): void
     {
-        //
+        View::composer('layouts.app', function ($view) {
+            $view->with('weather', app(MedellinWeather::class)->getCurrent());
+        });
     }
 }
