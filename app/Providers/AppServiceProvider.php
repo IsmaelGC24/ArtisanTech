@@ -6,6 +6,7 @@ use App\Interfaces\PaymentMethod;
 use App\Util\CardPayment;
 use App\Util\CashOnDeliveryPayment;
 use App\Util\MedellinWeather;
+use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
@@ -24,6 +25,7 @@ class AppServiceProvider extends ServiceProvider
 
     public function boot(): void
     {
+        Paginator::useBootstrapFive();
         View::composer('layouts.app', function ($view) {
             $view->with('weather', app(MedellinWeather::class)->getCurrent());
         });
