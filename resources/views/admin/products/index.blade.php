@@ -3,58 +3,60 @@
 @section('title', __('products.title_index'))
 
 @section('content')
-    <div class="flex items-center justify-between mb-6">
-        <h1 class="text-2xl font-bold text-gray-800">{{ __('products.title_index') }}</h1>
-        <a href="{{ route('admin.products.create') }}" class="bg-slate-800 text-white px-4 py-2 rounded hover:bg-slate-700 transition">
+    <div class="d-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0">{{ __('products.title_index') }}</h1>
+        <a href="{{ route('admin.products.create') }}" class="btn btn-primary">
             {{ __('products.new_link') }}
         </a>
     </div>
 
-    <div class="bg-white rounded shadow overflow-hidden">
-        <table class="w-full text-left">
-            <thead class="bg-gray-50 border-b">
-                <tr>
-                    <th class="px-4 py-3 text-sm font-semibold text-gray-600">{{ __('products.name') }}</th>
-                    <th class="px-4 py-3 text-sm font-semibold text-gray-600">{{ __('products.brand') }}</th>
-                    <th class="px-4 py-3 text-sm font-semibold text-gray-600">{{ __('products.category') }}</th>
-                    <th class="px-4 py-3 text-sm font-semibold text-gray-600">{{ __('products.price') }}</th>
-                    <th class="px-4 py-3 text-sm font-semibold text-gray-600">{{ __('products.stock') }}</th>
-                    <th class="px-4 py-3 text-sm font-semibold text-gray-600">{{ __('products.active') }}</th>
-                    <th class="px-4 py-3 text-sm font-semibold text-gray-600">{{ __('products.actions') }}</th>
-                </tr>
-            </thead>
-            <tbody class="divide-y">
-                @forelse ($viewData['products'] as $product)
+    <div class="card shadow-sm">
+        <div class="table-responsive">
+            <table class="table table-striped table-hover align-middle mb-0">
+                <thead class="table-light">
                     <tr>
-                        <td class="px-4 py-3">{{ $product->getName() }}</td>
-                        <td class="px-4 py-3">{{ $product->getBrand()->getName() }}</td>
-                        <td class="px-4 py-3">{{ $product->getCategory()->getName() }}</td>
-                        <td class="px-4 py-3">{{ $product->getPrice() }}</td>
-                        <td class="px-4 py-3">{{ $product->getStock() }}</td>
-                        <td class="px-4 py-3">{{ $product->getActive() ? __('products.yes') : __('products.no') }}</td>
-                        <td class="px-4 py-3 space-x-2">
-                            <a href="{{ route('admin.products.edit', $product->getId()) }}" class="inline-block bg-amber-500 text-white px-3 py-1 rounded text-sm hover:bg-amber-600 transition">
-                                {{ __('products.edit') }}
-                            </a>
-                            <form action="{{ route('admin.products.destroy', $product->getId()) }}" method="POST" class="inline">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" onclick="return confirm('{{ __('products.confirm_delete') }}')" class="bg-red-500 text-white px-3 py-1 rounded text-sm hover:bg-red-600 transition">
-                                    {{ __('products.delete') }}
-                                </button>
-                            </form>
-                        </td>
+                        <th scope="col">{{ __('products.name') }}</th>
+                        <th scope="col">{{ __('products.brand') }}</th>
+                        <th scope="col">{{ __('products.category') }}</th>
+                        <th scope="col">{{ __('products.price') }}</th>
+                        <th scope="col">{{ __('products.stock') }}</th>
+                        <th scope="col">{{ __('products.active') }}</th>
+                        <th scope="col">{{ __('products.actions') }}</th>
                     </tr>
-                @empty
-                    <tr>
-                        <td colspan="7" class="px-4 py-6 text-center text-gray-500">{{ __('products.empty') }}</td>
-                    </tr>
-                @endforelse
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    @forelse ($viewData['products'] as $product)
+                        <tr>
+                            <td>{{ $product->getName() }}</td>
+                            <td>{{ $product->getBrand()->getName() }}</td>
+                            <td>{{ $product->getCategory()->getName() }}</td>
+                            <td>{{ $product->getPrice() }}</td>
+                            <td>{{ $product->getStock() }}</td>
+                            <td>{{ $product->getActive() ? __('products.yes') : __('products.no') }}</td>
+                            <td>
+                                <a href="{{ route('admin.products.edit', $product->getId()) }}" class="btn btn-warning btn-sm">
+                                    {{ __('products.edit') }}
+                                </a>
+                                <form action="{{ route('admin.products.destroy', $product->getId()) }}" method="POST" class="d-inline">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" onclick="return confirm('{{ __('products.confirm_delete') }}')" class="btn btn-danger btn-sm">
+                                        {{ __('products.delete') }}
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
+                    @empty
+                        <tr>
+                            <td colspan="7" class="text-center text-muted py-4">{{ __('products.empty') }}</td>
+                        </tr>
+                    @endforelse
+                </tbody>
+            </table>
+        </div>
     </div>
 
-    <div class="mt-4">
+    <div class="mt-3">
         {{ $viewData['products']->links() }}
     </div>
 @endsection
