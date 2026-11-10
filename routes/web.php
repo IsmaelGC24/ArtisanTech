@@ -10,6 +10,7 @@ Route::get('/language/{locale}', 'App\Http\Controllers\LanguageController@change
 Route::get('/products', 'App\Http\Controllers\ProductController@index')->name('products.index');
 Route::get('/products/{id}', 'App\Http\Controllers\ProductController@show')->name('products.show');
 
+Route::get('/productos-aliados', 'App\Http\Controllers\AlliedStoreController@index')->name('allies.index');
 // Cart section ("/cart")
 Route::get('/cart', 'App\Http\Controllers\CartController@index')->name('cart.index');
 Route::post('/cart/{id}', 'App\Http\Controllers\CartController@add')->name('cart.add');

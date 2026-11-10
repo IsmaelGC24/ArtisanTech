@@ -17,6 +17,7 @@
                     </span>
                 @endif
                 <a class="nav-link active" href="{{ route('products.index') }}">{{ __('app.products') }}</a>
+                <a class="nav-link active" href="{{ route('allies.index') }}">{{ __('app.allies') }}</a>  
                 <a class="nav-link active" href="{{ route('cart.index') }}">{{ __('app.cart') }} ({{ count(session('cart', [])) }})</a>
                 @guest
                     <a class="nav-link active" href="{{ route('login') }}">{{ __('app.login') }}</a>
