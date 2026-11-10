@@ -35,4 +35,8 @@ return [
         ],
     ],
 
+    'allies' => [
+        'products_url' => env('ALLIES_PRODUCTS_URL', 'http://34.135.31.102/api/instruments'),
+    ],
+
 ];

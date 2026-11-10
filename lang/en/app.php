@@ -8,4 +8,5 @@ return [
     'products' => 'Products',
     'cart' => 'Cart',
     'my_orders' => 'My orders',
+    'allies' => 'Partners',
 ];
