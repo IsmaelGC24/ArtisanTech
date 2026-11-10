@@ -39,7 +39,7 @@ Tienda en línea de tecnología hecha con Laravel 13 y MySQL, siguiendo el patr�
    php artisan serve
 ```
 
-No hace falta `npm`: Bootstrap y Tailwind se cargan por CDN.
+No hace falta `npm`: Bootstrap se carga por CDN.
 
 ## Rutas principales
 
