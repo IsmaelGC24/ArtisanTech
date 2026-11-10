@@ -9,4 +9,6 @@ return [
     'cart' => 'Cart',
     'my_orders' => 'My orders',
     'allies' => 'Partners',
+    'toggle_menu' => 'Toggle navigation',
+    'account_menu' => 'Account menu',
 ];

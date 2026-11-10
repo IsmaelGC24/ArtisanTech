@@ -130,4 +130,15 @@ class User extends Authenticatable
     {
         return $this->getRole() === 'admin';
     }
+
+    public function getInitials(): string
+    {
+        $words = preg_split('/\s+/', trim($this->getName()), -1, PREG_SPLIT_NO_EMPTY);
+        $initials = '';
+        foreach (array_slice($words, 0, 2) as $word) {
+            $initials .= mb_strtoupper(mb_substr($word, 0, 1));
+        }
+
+        return $initials;
+    }
 }
