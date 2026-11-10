@@ -44,7 +44,7 @@
                                class="text-white text-decoration-none {{ app()->getLocale() === $locale ? 'fw-bold' : 'opacity-50' }}">{{ strtoupper($locale) }}</a>
                         @endforeach
                     </div>
-                    <a href="{{ route('home') }}" class="nav-link text-white-50 small">{{ __('admin.back_to_store') }}</a>
+                    <a href="{{ route('home') }}" class="nav-link text-white-50 small px-3 py-2">{{ __('admin.back_to_store') }}</a>
                     <form action="{{ route('logout') }}" method="POST">
                         @csrf
                         <button type="submit" class="btn btn-link text-white-50 text-decoration-none text-start small w-100 px-3">

@@ -9,4 +9,6 @@ return [
     'cart' => 'Carrito',
     'my_orders' => 'Mis pedidos',
     'allies' => 'Aliados',
+    'toggle_menu' => 'Mostrar u ocultar el menú',
+    'account_menu' => 'Menú de cuenta',
 ];

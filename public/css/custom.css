@@ -1,0 +1,116 @@
+/*
+ * Artisan Tech - estilos propios de la tienda.
+ * Se carga después de Bootstrap en layouts/app.blade.php, así que lo que
+ * se escriba aquí sobrescribe a Bootstrap. Los colores y sombras viven en
+ * las variables de :root para cambiarlos en un solo lugar.
+ */
+
+:root {
+    --at-accent: #0d6efd;
+    --at-surface: #f6f7f9;
+    --at-ink: #1f2937;
+    --at-muted: #6b7280;
+    --at-radius: 0.75rem;
+    --at-shadow: 0 1px 2px rgba(16, 24, 40, 0.06), 0 4px 12px rgba(16, 24, 40, 0.06);
+    --at-shadow-hover: 0 4px 8px rgba(16, 24, 40, 0.08), 0 12px 24px rgba(16, 24, 40, 0.1);
+}
+
+/* ---------- Base ---------- */
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--at-surface);
+    color: var(--at-ink);
+}
+
+main {
+    flex: 1 0 auto;
+}
+
+h1,
+h2,
+h3 {
+    font-weight: 700;
+    letter-spacing: -0.01em;
+}
+
+/* ---------- Navbar ---------- */
+
+.app-navbar {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.app-navbar .navbar-brand {
+    letter-spacing: 0.02em;
+}
+
+/* Cada enlace del menú se ve como un botón propio: más aire, más contraste y fondo en la página activa. */
+.app-navbar .navbar-nav .nav-link {
+    padding: 0.45rem 0.9rem;
+    border-radius: 0.5rem;
+    color: rgba(255, 255, 255, 0.75);
+}
+
+.app-navbar .navbar-nav .nav-link:hover,
+.app-navbar .navbar-nav .nav-link:focus {
+    color: #fff;
+    background-color: rgba(255, 255, 255, 0.08);
+}
+
+.app-navbar .navbar-nav .nav-link.active {
+    color: #fff;
+    background-color: rgba(255, 255, 255, 0.14);
+}
+
+.avatar-initials {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.125rem;
+    height: 2.125rem;
+    border-radius: 50%;
+    background-color: var(--at-accent);
+    color: #fff;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    user-select: none;
+}
+
+.app-navbar .dropdown-menu {
+    min-width: 14rem;
+    border: 0;
+    border-radius: var(--at-radius);
+    box-shadow: var(--at-shadow-hover);
+}
+
+/* ---------- Componentes reutilizables ---------- */
+
+.card {
+    border: 0;
+    border-radius: var(--at-radius);
+    box-shadow: var(--at-shadow);
+}
+
+/* Agregar la clase "card-hover" a una tarjeta para que se eleve al pasar el mouse. */
+.card-hover {
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.card-hover:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--at-shadow-hover);
+}
+
+.btn {
+    border-radius: 0.5rem;
+}
+
+/* Agregar la clase "price" a los precios para resaltarlos. */
+.price {
+    font-weight: 700;
+    color: var(--at-accent);
+    font-variant-numeric: tabular-nums;
+}
