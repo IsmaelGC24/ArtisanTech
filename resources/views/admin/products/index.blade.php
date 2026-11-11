@@ -3,7 +3,7 @@
 @section('title', __('products.title_index'))
 
 @section('content')
-    <div class="d-flex align-items-center justify-content-between mb-4">
+    <div class="d-flex flex-wrap align-items-center justify-content-between gap-2 mb-4">
         <h1 class="h3 mb-0">{{ __('products.title_index') }}</h1>
         <a href="{{ route('admin.products.create') }}" class="btn btn-primary">
             {{ __('products.new_link') }}
@@ -33,7 +33,7 @@
                             <td>{{ $product->getPrice() }}</td>
                             <td>{{ $product->getStock() }}</td>
                             <td>{{ $product->getActive() ? __('products.yes') : __('products.no') }}</td>
-                            <td>
+                            <td class="text-nowrap">
                                 <a href="{{ route('admin.products.edit', $product->getId()) }}" class="btn btn-warning btn-sm">
                                     {{ __('products.edit') }}
                                 </a>

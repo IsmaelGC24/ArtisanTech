@@ -3,7 +3,7 @@
 @section('title', __('brands.title_index'))
 
 @section('content')
-    <div class="d-flex align-items-center justify-content-between mb-4">
+    <div class="d-flex flex-wrap align-items-center justify-content-between gap-2 mb-4">
         <h1 class="h3 mb-0">{{ __('brands.title_index') }}</h1>
         <a href="{{ route('admin.brands.create') }}" class="btn btn-primary">
             {{ __('brands.new_link') }}
@@ -29,7 +29,7 @@
                             <td>{{ $brand->getCountry() }}</td>
                             <td>{{ $brand->getWebsite() }}</td>
                             <td>{{ $brand->getProducts()->count() }}</td>
-                            <td>
+                            <td class="text-nowrap">
                                 <a href="{{ route('admin.brands.edit', $brand->getId()) }}" class="btn btn-warning btn-sm">
                                     {{ __('brands.edit') }}
                                 </a>

@@ -12,9 +12,11 @@
                     <form action="{{ route('admin.products.store') }}" method="POST">
                         @csrf
                         @include('admin.products._form', ['product' => null])
-                        <button type="submit" class="btn btn-primary">
-                            {{ __('products.save') }}
-                        </button>
+                        <div class="d-grid d-md-block">
+                            <button type="submit" class="btn btn-primary">
+                                {{ __('products.save') }}
+                            </button>
+                        </div>
                     </form>
                 </div>
             </div>
