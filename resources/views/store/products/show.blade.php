@@ -30,7 +30,7 @@
                     <form action="{{ route('cart.add', $viewData['product']->getId()) }}" method="POST" class="row g-2 mt-3">
                         @csrf
                         <div class="col-4 col-md-2">
-                            <input type="number" name="quantity" value="1" min="1" max="{{ $viewData['product']->getStock() }}" class="form-control">
+                            <input type="number" name="quantity" value="{{ old('quantity', 1) }}" min="1" max="{{ $viewData['product']->getStock() }}" class="form-control @error('quantity') is-invalid @enderror">
                         </div>
                         <div class="col-8 col-md-auto">
                             <button type="submit" class="btn btn-dark w-100 text-nowrap">{{ __('cart.add') }}</button>

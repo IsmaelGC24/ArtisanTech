@@ -63,13 +63,16 @@
                     <div class="mb-3">
                         <label class="form-label fw-semibold">{{ __('cart.payment_method') }}</label>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="payment_method" id="payment_card" value="card" checked>
+                            <input class="form-check-input @error('payment_method') is-invalid @enderror" type="radio" name="payment_method" id="payment_card" value="card" @checked(old('payment_method', 'card') === 'card')>
                             <label class="form-check-label" for="payment_card">{{ __('cart.payment_card') }}</label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="payment_method" id="payment_cash" value="cash">
+                            <input class="form-check-input @error('payment_method') is-invalid @enderror" type="radio" name="payment_method" id="payment_cash" value="cash" @checked(old('payment_method') === 'cash')>
                             <label class="form-check-label" for="payment_cash">{{ __('cart.payment_cash') }}</label>
                         </div>
+                        @error('payment_method')
+                            <div class="invalid-feedback d-block">{{ $message }}</div>
+                        @enderror
                     </div>
                     <div class="d-grid gap-2 d-sm-flex">
                         <a href="{{ route('products.index') }}" class="btn btn-outline-dark">{{ __('cart.continue_shopping') }}</a>
