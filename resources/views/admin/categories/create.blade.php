@@ -12,9 +12,11 @@
                     <form action="{{ route('admin.categories.store') }}" method="POST">
                         @csrf
                         @include('admin.categories._form', ['category' => null])
-                        <button type="submit" class="btn btn-primary">
-                            {{ __('categories.save') }}
-                        </button>
+                        <div class="d-grid d-md-block">
+                            <button type="submit" class="btn btn-primary">
+                                {{ __('categories.save') }}
+                            </button>
+                        </div>
                     </form>
                 </div>
             </div>

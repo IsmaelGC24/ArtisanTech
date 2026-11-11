@@ -3,7 +3,7 @@
 @section('title', __('categories.title_index'))
 
 @section('content')
-    <div class="d-flex align-items-center justify-content-between mb-4">
+    <div class="d-flex flex-wrap align-items-center justify-content-between gap-2 mb-4">
         <h1 class="h3 mb-0">{{ __('categories.title_index') }}</h1>
         <a href="{{ route('admin.categories.create') }}" class="btn btn-primary">
             {{ __('categories.new_link') }}
@@ -27,7 +27,7 @@
                             <td>{{ $category->getName() }}</td>
                             <td>{{ $category->getDescription() }}</td>
                             <td>{{ $category->getProducts()->count() }}</td>
-                            <td>
+                            <td class="text-nowrap">
                                 <a href="{{ route('admin.categories.edit', $category->getId()) }}" class="btn btn-warning btn-sm">
                                     {{ __('categories.edit') }}
                                 </a>

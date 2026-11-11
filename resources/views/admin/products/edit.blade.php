@@ -13,9 +13,11 @@
                         @csrf
                         @method('PUT')
                         @include('admin.products._form', ['product' => $viewData['product']])
-                        <button type="submit" class="btn btn-primary">
-                            {{ __('products.update') }}
-                        </button>
+                        <div class="d-grid d-md-block">
+                            <button type="submit" class="btn btn-primary">
+                                {{ __('products.update') }}
+                            </button>
+                        </div>
                     </form>
                 </div>
             </div>

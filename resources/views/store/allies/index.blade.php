@@ -4,6 +4,13 @@
 
 @section('content')
     <div class="container py-4">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{{ route('home') }}">{{ __('catalog.breadcrumb_home') }}</a></li>
+                <li class="breadcrumb-item active" aria-current="page">{{ __('allies.title') }}</li>
+            </ol>
+        </nav>
+
         <h1 class="h3 mb-1">{{ __('allies.title') }}</h1>
         <p class="text-muted mb-4">{{ __('allies.subtitle') }}</p>
         @if ($viewData['stale'])

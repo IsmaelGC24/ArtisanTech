@@ -14,7 +14,6 @@ return [
     'quantity' => 'Cantidad',
     'unit_price' => 'Precio unitario',
     'subtotal' => 'Subtotal',
-    'back' => 'Volver a mis pedidos',
     'placed' => 'Tu pedido fue registrado correctamente.',
     'stock_error' => 'Algunos productos ya no están disponibles en la cantidad pedida. Revisa tu carrito.',
     'status_pending' => 'Pendiente',

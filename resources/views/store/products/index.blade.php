@@ -4,6 +4,13 @@
 
 @section('content')
     <div class="container py-4">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{{ route('home') }}">{{ __('catalog.breadcrumb_home') }}</a></li>
+                <li class="breadcrumb-item active" aria-current="page">{{ __('catalog.breadcrumb_products') }}</li>
+            </ol>
+        </nav>
+
         <h1 class="mb-4">{{ __('catalog.title') }}</h1>
 
         <div class="card mb-4">

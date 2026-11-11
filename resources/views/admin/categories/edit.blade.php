@@ -13,9 +13,11 @@
                         @csrf
                         @method('PUT')
                         @include('admin.categories._form', ['category' => $viewData['category']])
-                        <button type="submit" class="btn btn-primary">
-                            {{ __('categories.update') }}
-                        </button>
+                        <div class="d-grid d-md-block">
+                            <button type="submit" class="btn btn-primary">
+                                {{ __('categories.update') }}
+                            </button>
+                        </div>
                     </form>
                 </div>
             </div>

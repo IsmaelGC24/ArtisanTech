@@ -14,7 +14,6 @@ return [
     'quantity' => 'Quantity',
     'unit_price' => 'Unit price',
     'subtotal' => 'Subtotal',
-    'back' => 'Back to my orders',
     'placed' => 'Your order was placed successfully.',
     'stock_error' => 'Some products are no longer available in the requested quantity. Check your cart.',
     'status_pending' => 'Pending',
