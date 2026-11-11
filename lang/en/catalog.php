@@ -12,6 +12,8 @@ return [
     'units' => ':count units in stock',
     'view_details' => 'View details',
     'back' => 'Back to the catalog',
+    'breadcrumb_home' => 'Home',
+    'breadcrumb_products' => 'Products',
     'no_description' => 'This product has no description.',
     'empty' => 'No products found with those filters.',
 ];
