@@ -1,12 +1,12 @@
 <h2 class="h4 mb-3">{{ $title }}</h2>
-<div class="row mb-5">
+<div class="row g-3 g-md-4 mb-5">
     @foreach ($products as $product)
-        <div class="col-md-3 mb-3">
-            <div class="card h-100">
+        <div class="col-sm-6 col-lg-3">
+            <div class="card card-hover h-100">
                 <div class="card-body">
-                    <h5 class="card-title">{{ $product->getName() }}</h5>
-                    <p class="text-muted mb-1">{{ $product->getBrand()->getName() }}</p>
-                    <p class="fw-bold mb-1">{{ $product->getFormattedPrice() }}</p>
+                    <h3 class="h6 card-title mb-1">{{ $product->getName() }}</h3>
+                    <p class="product-meta mb-2">{{ $product->getBrand()->getName() }}</p>
+                    <p class="price fs-5 mb-1">{{ $product->getFormattedPrice() }}</p>
                     <p class="small text-muted mb-0">
                         @if ($metric === 'sold')
                             {{ trans_choice('home.units_sold', $product->getUnitsSold()) }}
@@ -15,7 +15,7 @@
                         @endif
                     </p>
                 </div>
-                <div class="card-footer bg-white border-0">
+                <div class="card-footer bg-transparent border-0 pt-0 pb-3">
                     <a href="{{ route('products.show', $product->getId()) }}" class="btn btn-outline-dark btn-sm">
                         {{ __('catalog.view_details') }}
                     </a>
