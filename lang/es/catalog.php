@@ -12,6 +12,8 @@ return [
     'units' => ':count unidades en stock',
     'view_details' => 'Ver detalle',
     'back' => 'Volver al catálogo',
+    'breadcrumb_home' => 'Inicio',
+    'breadcrumb_products' => 'Productos',
     'no_description' => 'Este producto no tiene descripción.',
     'empty' => 'No se encontraron productos con esos filtros.',
 ];

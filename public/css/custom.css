@@ -13,6 +13,12 @@
     --at-radius: 0.75rem;
     --at-shadow: 0 1px 2px rgba(16, 24, 40, 0.06), 0 4px 12px rgba(16, 24, 40, 0.06);
     --at-shadow-hover: 0 4px 8px rgba(16, 24, 40, 0.08), 0 12px 24px rgba(16, 24, 40, 0.1);
+    --at-hero-start: #111827;
+    --at-hero-end: #1e3a8a;
+    --at-stock-in: #067647;
+    --at-stock-in-bg: #dcfae6;
+    --at-stock-out: #b42318;
+    --at-stock-out-bg: #fee4e2;
 }
 
 /* ---------- Base ---------- */
@@ -113,4 +119,57 @@ h3 {
     font-weight: 700;
     color: var(--at-accent);
     font-variant-numeric: tabular-nums;
+}
+
+/* ---------- Tienda ---------- */
+
+/* Banner destacado del inicio. */
+.hero {
+    padding: 2.5rem 1.5rem;
+    border-radius: var(--at-radius);
+    background: linear-gradient(135deg, var(--at-hero-start), var(--at-hero-end));
+    color: #fff;
+    box-shadow: var(--at-shadow);
+}
+
+.hero .lead {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+@media (min-width: 768px) {
+    .hero {
+        padding: 4rem 3rem;
+    }
+}
+
+/* Badges de disponibilidad: usar "badge badge-stock badge-stock-in" o "badge-stock-out". */
+.badge-stock {
+    font-weight: 600;
+    border-radius: 999px;
+    padding: 0.35em 0.75em;
+}
+
+.badge-stock-in {
+    color: var(--at-stock-in);
+    background-color: var(--at-stock-in-bg);
+}
+
+.badge-stock-out {
+    color: var(--at-stock-out);
+    background-color: var(--at-stock-out-bg);
+}
+
+/* Datos secundarios de una tarjeta de producto (marca, categoría). */
+.product-meta {
+    color: var(--at-muted);
+    font-size: 0.9rem;
+}
+
+.breadcrumb a {
+    color: var(--at-muted);
+    text-decoration: none;
+}
+
+.breadcrumb a:hover {
+    color: var(--at-accent);
 }

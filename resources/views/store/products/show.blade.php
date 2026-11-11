@@ -4,32 +4,46 @@
 
 @section('content')
     <div class="container py-4">
-        <a href="{{ route('products.index') }}" class="btn btn-link px-0 mb-3">&larr; {{ __('catalog.back') }}</a>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb mb-4">
+                <li class="breadcrumb-item"><a href="{{ route('home') }}">{{ __('catalog.breadcrumb_home') }}</a></li>
+                <li class="breadcrumb-item"><a href="{{ route('products.index') }}">{{ __('catalog.breadcrumb_products') }}</a></li>
+                <li class="breadcrumb-item active" aria-current="page">{{ $viewData['product']->getName() }}</li>
+            </ol>
+        </nav>
 
-        <h1>{{ $viewData['product']->getName() }}</h1>
-        <p class="text-muted">
-            {{ $viewData['product']->getBrand()->getName() }} · {{ $viewData['product']->getCategory()->getName() }}
-        </p>
-        <p class="fs-3 fw-bold">{{ $viewData['product']->getFormattedPrice() }}</p>
-        <p>{{ $viewData['product']->getDescription() ?? __('catalog.no_description') }}</p>
+        <div class="card mb-5">
+            <div class="card-body p-4 p-md-5">
+                <h1 class="mb-1">{{ $viewData['product']->getName() }}</h1>
+                <p class="product-meta mb-3">
+                    {{ $viewData['product']->getBrand()->getName() }} · {{ $viewData['product']->getCategory()->getName() }}
+                </p>
+                <p class="price fs-2 mb-3">{{ $viewData['product']->getFormattedPrice() }}</p>
+                <p class="mb-4">{{ $viewData['product']->getDescription() ?? __('catalog.no_description') }}</p>
 
-        @if ($viewData['product']->checkAvailability())
-            <span class="badge bg-success">{{ __('catalog.in_stock') }}</span>
-            <span class="text-muted ms-2">{{ __('catalog.units', ['count' => $viewData['product']->getStock()]) }}</span>
+                @if ($viewData['product']->checkAvailability())
+                    <div class="d-flex flex-wrap align-items-center gap-2">
+                        <span class="badge badge-stock badge-stock-in">{{ __('catalog.in_stock') }}</span>
+                        <span class="text-muted small">{{ __('catalog.units', ['count' => $viewData['product']->getStock()]) }}</span>
+                    </div>
 
-            <form action="{{ route('cart.add', $viewData['product']->getId()) }}" method="POST" class="d-flex gap-2 mt-3 col-md-4">
-                @csrf
-                <input type="number" name="quantity" value="1" min="1" max="{{ $viewData['product']->getStock() }}" class="form-control">
-                <button type="submit" class="btn btn-dark text-nowrap">{{ __('cart.add') }}</button>
-            </form>
-            @error('quantity')
-                <span class="text-danger small">{{ $message }}</span>
-            @enderror
-        @else
-            <span class="badge bg-secondary">{{ __('catalog.out_of_stock') }}</span>
-        @endif
-
-        <hr class="my-4">
+                    <form action="{{ route('cart.add', $viewData['product']->getId()) }}" method="POST" class="row g-2 mt-3">
+                        @csrf
+                        <div class="col-4 col-md-2">
+                            <input type="number" name="quantity" value="1" min="1" max="{{ $viewData['product']->getStock() }}" class="form-control">
+                        </div>
+                        <div class="col-8 col-md-auto">
+                            <button type="submit" class="btn btn-dark w-100 text-nowrap">{{ __('cart.add') }}</button>
+                        </div>
+                    </form>
+                    @error('quantity')
+                        <span class="text-danger small">{{ $message }}</span>
+                    @enderror
+                @else
+                    <span class="badge badge-stock badge-stock-out">{{ __('catalog.out_of_stock') }}</span>
+                @endif
+            </div>
+        </div>
 
         <h2 class="h4">{{ __('reviews.title') }} ({{ $viewData['product']->getReviews()->count() }})</h2>
 
@@ -40,7 +54,7 @@
         @endif
 
         @forelse ($viewData['product']->getReviews() as $review)
-            <div class="border rounded p-3 mb-3">
+            <div class="card card-body mb-3">
                 <div class="d-flex justify-content-between">
                     <strong>{{ $review->getUser()->getName() }}</strong>
                     <span class="text-muted small">{{ $review->getFormattedDate() }}</span>
