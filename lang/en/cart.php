@@ -2,6 +2,7 @@
 
 return [
     'title' => 'Shopping cart',
+    'breadcrumb' => 'Cart',
     'product' => 'Product',
     'price' => 'Price',
     'quantity' => 'Quantity',

@@ -4,7 +4,13 @@
 
 @section('content')
     <div class="container py-4">
-        <a href="{{ route('orders.index') }}" class="btn btn-link px-0 mb-3">&larr; {{ __('orders.back') }}</a>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{{ route('home') }}">{{ __('catalog.breadcrumb_home') }}</a></li>
+                <li class="breadcrumb-item"><a href="{{ route('orders.index') }}">{{ __('orders.title_index') }}</a></li>
+                <li class="breadcrumb-item active" aria-current="page">{{ __('orders.title_show', ['id' => $viewData['order']->getId()]) }}</li>
+            </ol>
+        </nav>
 
         <h1>{{ __('orders.title_show', ['id' => $viewData['order']->getId()]) }}</h1>
         <p class="text-muted small">
