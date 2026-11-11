@@ -6,7 +6,7 @@
     <div class="container py-4">
         <h1 class="h3 mb-1">{{ __('allies.title') }}</h1>
         <p class="text-muted mb-4">{{ __('allies.subtitle') }}</p>
-                @if ($viewData['stale'])
+        @if ($viewData['stale'])
             <div class="alert alert-warning" role="alert">{{ __('allies.stale') }}</div>
         @endif
 
