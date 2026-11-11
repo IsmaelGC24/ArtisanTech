@@ -4,6 +4,13 @@
 
 @section('content')
     <div class="container py-4">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{{ route('home') }}">{{ __('catalog.breadcrumb_home') }}</a></li>
+                <li class="breadcrumb-item active" aria-current="page">{{ __('orders.title_index') }}</li>
+            </ol>
+        </nav>
+
         <h1 class="mb-4">{{ __('orders.title_index') }}</h1>
 
         @if ($viewData['orders']->isEmpty())
@@ -15,9 +22,9 @@
                     <thead>
                         <tr>
                             <th>{{ __('orders.number') }}</th>
-                            <th>{{ __('orders.date') }}</th>
+                            <th class="d-none d-md-table-cell">{{ __('orders.date') }}</th>
                             <th>{{ __('orders.status') }}</th>
-                            <th>{{ __('orders.payment_method') }}</th>
+                            <th class="d-none d-md-table-cell">{{ __('orders.payment_method') }}</th>
                             <th>{{ __('orders.total') }}</th>
                             <th></th>
                         </tr>
@@ -26,9 +33,9 @@
                         @foreach ($viewData['orders'] as $order)
                             <tr>
                                 <td>#{{ $order->getId() }}</td>
-                                <td class="text-nowrap">{{ $order->getFormattedOrderDate() }}</td>
+                                <td class="d-none d-md-table-cell text-nowrap">{{ $order->getFormattedOrderDate() }}</td>
                                 <td>{{ __('orders.status_'.$order->getStatus()) }}</td>
-                                <td>{{ __('orders.payment_'.$order->getPaymentMethod()) }}</td>
+                                <td class="d-none d-md-table-cell">{{ __('orders.payment_'.$order->getPaymentMethod()) }}</td>
                                 <td class="text-nowrap">{{ $order->getFormattedTotal() }}</td>
                                 <td class="text-nowrap">
                                     <a href="{{ route('orders.show', $order->getId()) }}" class="btn btn-outline-dark btn-sm">
